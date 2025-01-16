@@ -1,23 +1,24 @@
-from .campaign_base import CampaignBase
-from module.map.map_base import CampaignMap
-from module.map.map_grids import SelectedGrids, RoadGrids
+from ..campaign_war_archives.campaign_base import CampaignBase
 from module.logger import logger
+from module.map.map_base import CampaignMap
+from module.map.map_grids import RoadGrids, SelectedGrids
+
 from .b1 import Config as ConfigBase
 
 MAP = CampaignMap('B3')
 MAP.shape = 'I9'
-MAP.camera_data = ['D3', 'F3', 'F5', 'F7']
-MAP.camera_data_spawn_point = ['D7']
+MAP.camera_data = ['D3', 'D5', 'F3', 'F5']
+MAP.camera_data_spawn_point = ['E7']
 MAP.map_data = """
-    -- ++ ++ ME -- ME -- ++ ++
-    ++ ME -- -- -- -- -- MB ++
-    -- -- -- Me -- ME __ -- --
-    ME -- Me -- MS ++ ME -- ME
-    -- -- ++ MS -- MS -- -- --
-    ++ -- -- -- MS -- Me -- ME
-    ++ SP -- -- ++ Me -- -- --
-    ++ -- SP -- -- -- -- ME ++
-    -- ++ ++ ++ -- ME ++ ++ --
+    ++ ++ ++ -- -- -- ++ ++ ++
+    -- -- ME ME -- ME ME -- --
+    -- ME -- -- MS -- -- ME --
+    ++ -- -- ++ -- ++ -- -- ++
+    ++ -- MS -- MB -- MS -- ++
+    ME -- -- ++ -- ++ -- -- ME
+    -- Me -- Me __ Me -- Me --
+    ++ ++ -- -- -- -- -- ++ ++
+    ++ ++ ++ SP -- SP ++ ++ ++
 """
 MAP.weight_data = """
     50 50 50 50 50 50 50 50 50
@@ -48,14 +49,11 @@ A7, B7, C7, D7, E7, F7, G7, H7, I7, \
 A8, B8, C8, D8, E8, F8, G8, H8, I8, \
 A9, B9, C9, D9, E9, F9, G9, H9, I9, \
     = MAP.flatten()
-MAP.ignore_prediction(C5, is_siren=True)
-MAP.ignore_prediction(E7, is_siren=True)
-MAP.ignore_prediction(G4, is_siren=True)
 
 
 class Config(ConfigBase):
     # ===== Start of generated config =====
-    MAP_SIREN_TEMPLATE = ['SirenBoss15', 'SirenBoss16']
+    MAP_SIREN_TEMPLATE = ['CL', 'CAred', 'Soobrazitelny', 'Kiev']
     MOVABLE_ENEMY_TURN = (2,)
     MAP_HAS_SIREN = True
     MAP_HAS_MOVABLE_ENEMY = True
@@ -65,15 +63,14 @@ class Config(ConfigBase):
     MAP_HAS_MYSTERY = False
     # ===== End of generated config =====
 
-    MAP_SIREN_HAS_BOSS_ICON_SMALL = False
-    MAP_SWIPE_MULTIPLY = (0.997, 1.015)
-    MAP_SWIPE_MULTIPLY_MINITOUCH = (0.964, 0.982)
-    MAP_SWIPE_MULTIPLY_MAATOUCH = (0.936, 0.953)
+    MAP_SWIPE_MULTIPLY = (0.990, 1.009)
+    MAP_SWIPE_MULTIPLY_MINITOUCH = (0.957, 0.975)
+    MAP_SWIPE_MULTIPLY_MAATOUCH = (0.930, 0.946)
 
 
 class Campaign(CampaignBase):
     MAP = MAP
-    ENEMY_FILTER = '1L > 1M > 2L > 2M > 3L > 3M > 1E > 2E > 3E > 1C > 2C > 3C'
+    ENEMY_FILTER = '1L > 1M > 1E > 1C > 2L > 2M > 2E > 2C > 3L > 3M > 3E > 3C'
 
     def battle_0(self):
         if self.clear_siren():

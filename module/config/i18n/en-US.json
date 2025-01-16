@@ -782,6 +782,7 @@
       "war_archives_20211111_cn": "archives The Flame-Touched Dagger",
       "war_archives_20211229_cn": "archives Tower of Transcendence",
       "war_archives_20220210_cn": "archives Northern Overture",
+      "war_archives_20220224_cn": "archives Abyssal Refrain",
       "war_archives_20220414_cn": "archives Aurora Noctis"
     },
     "Mode": {
@@ -2275,7 +2276,7 @@
     },
     "DossierAutoAttackMode": {
       "name": "Use Auto Attack Mode in META Dossier",
-      "help": "Use Auto Attack Mode after the first battle, currently only available on CN"
+      "help": "Use Auto Attack Mode after the first battle"
     },
     "RequestAssist": {
       "name": "Request Assists",
