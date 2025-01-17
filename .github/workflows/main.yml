@@ -27,14 +27,6 @@ jobs:
                   target_sync_branch: master
                   test_mode: false
 
-            - name: Sync Upstream dev
-              uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
-              with:
-                  target_repo_token: ${{ secrets.GITHUB_TOKEN }}
-                  upstream_sync_repo: LmeSzinc/AzurLaneAutoScript
-                  upstream_sync_branch: dev
-                  target_sync_branch: dev
-                  test_mode: false
 
             - name: Check for Failure
               if: failure()
